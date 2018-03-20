@@ -32,7 +32,7 @@ button {
 <script src="https://d3js.org/d3.v2.js"></script>
 
 <div>
-  <h1 style="font-family:futura"> CO2 Emissions per capita by Country</h1>
+  <h1 style="font-family:futura"> CO2 Emissions in tons per capita by country</h1>
 </div>
 
 
@@ -41,7 +41,7 @@ button {
 
 <script>
 
-chart("un_data.csv", "blue");
+chart("un_data.csv", "sunset");
 
 var datearray = [];
 var colorrange = [];
@@ -68,9 +68,9 @@ strokecolor = colorrange[0];
 var format = d3.time.format("%Y");
 
 // Size of chart
-var margin = {top: 20, right: 40, bottom: 30, left: 30};
+var margin = {top: 20, right: 60, bottom: 30, left: 50};
 var width = document.body.clientWidth - margin.left - margin.right;
-var height = 600 - margin.top - margin.bottom;
+var height = 560 - margin.top - margin.bottom;
 
 var tooltip = d3.select("body")
     .append("div")
