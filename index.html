@@ -3,7 +3,7 @@
 <style>
 
 body {
-  font: 10px sans-serif;
+  font: 10px futura;
 }
 
 .chart { 
@@ -11,7 +11,7 @@ body {
 }
 
 p {
-  font: 12px helvetica;
+  font: 12px garamond;
 }
 
 .axis path, .axis line {
@@ -30,6 +30,10 @@ button {
 </style>
 <body>
 <script src="http://d3js.org/d3.v2.js"></script>
+
+<div>
+  <h1 style="font-family:futura"> CO2 Emissions per capita by Country</h1>
+</div>
 
 
 <div class="chart">
@@ -53,10 +57,14 @@ else if (color == "pink") {
 }
 else if (color == "orange") {
   colorrange = ["#B30000", "#E34A33", "#FC8D59", "#FDBB84", "#FDD49E", "#FEF0D9"];
+} else if (color == "sunset") {
+  colorrange = ["#FB3756	", "#F94A3E	", "#FC4B49	", "#FE504D	", "#FE5943	", "#FE6941	", "#FF773C	", "#FD853E	", "#FF9441	", "#FFA74A	", "#FDB65A	", "#FFC368	", "#FFCF78	", "#FFCE8F", "#F7BEAA	", "#EBBDB4	", "#E2B3B9	", "#D9B7C7	", "#D1B0CB	", "#D3B0CE	", "#BBAEDC	", "#A9ACE1	", "#94A6EA	", "#8AA9EC	", "#6FA7F4	", "#53A2F4	", "#3E9EF5	", "#389CF4	", "#1A99F2	", "#159AEC	", "#0A98F0","#118de0", "#0083db", "#007BCD", "#0f7bc4","#1374B3","#116CA6","#0F649A","#0E5C8F","#0C5483","#0A4C78","#08456C","#073D61"];
 }
 strokecolor = colorrange[0];
 
-// var format = d3.time.format("%m/%d/%y");
+"#1374B3","#116CA6","#0F649A","#0E5C8F","#0C5483","#0A4C78","#08456C","#073D61"
+
+
 var format = d3.time.format("%Y");
 
 // Size of chart
@@ -159,7 +167,7 @@ var graph = d3.csv(csvpath, function(data) {
       mousex = d3.mouse(this);
       mousex = mousex[0];
       var invertedx = x.invert(mousex);
-      invertedx = invertedx.getMonth() + invertedx.getDate();
+      invertedx = 25 - (invertedx.getYear() - 90);
       var selected = (d.values);
       for (var k = 0; k < selected.length; k++) {
         datearray[k] = selected[k].date;
@@ -167,7 +175,7 @@ var graph = d3.csv(csvpath, function(data) {
       }
 
       mousedate = datearray.indexOf(invertedx);
-      pro = d.values[0].value;
+      pro = d.values[invertedx].value;
       var what = d;
 
       // Controls annotation on hover
@@ -196,7 +204,7 @@ var graph = d3.csv(csvpath, function(data) {
         .style("z-index", "19")
         .style("width", "1px")
         .style("height", "570px")
-        .style("top", "10px")
+        .style("top", "40px")
         .style("bottom", "30px")
         .style("left", "0px")
         .style("background", "#fff");
