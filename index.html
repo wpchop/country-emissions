@@ -154,6 +154,15 @@ var graph = d3.csv(csvpath, function(data) {
       .attr("class", "y axis")
       .call(yAxis.orient("left"));
 
+        // text label for the y axis
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("CO2 in tons per capita per year");    
+
   svg.selectAll(".layer")
     .attr("opacity", 1)
     .on("mouseover", function(d, i) {
